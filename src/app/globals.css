@@ -1,0 +1,291 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-picked: var(--picked);
+  --color-picked-soft: var(--picked-soft);
+  --color-passed: var(--passed);
+  --color-passed-soft: var(--passed-soft);
+  --color-live: var(--live);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-sans);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  --background: oklch(0.985 0 0);
+  --foreground: oklch(0.2 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.2 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.2 0 0);
+  --primary: oklch(0.5 0.2 264);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.955 0 0);
+  --secondary-foreground: oklch(0.25 0 0);
+  --muted: oklch(0.955 0 0);
+  --muted-foreground: oklch(0.47 0 0);
+  --accent: oklch(0.945 0 0);
+  --accent-foreground: oklch(0.2 0 0);
+  --destructive: oklch(0.55 0.19 30);
+  --border: oklch(0 0 0 / 8%);
+  --input: oklch(0 0 0 / 10%);
+  --ring: oklch(0.5 0.2 264);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.97 0 0);
+  --sidebar-foreground: oklch(0.2 0 0);
+  --sidebar-primary: oklch(0.5 0.2 264);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.93 0 0);
+  --sidebar-accent-foreground: oklch(0.2 0 0);
+  --sidebar-border: oklch(0 0 0 / 8%);
+  --sidebar-ring: oklch(0.5 0.2 264);
+
+  /* Whim */
+  --picked: oklch(0.4 0.13 152);
+  --picked-soft: oklch(0.96 0.035 152);
+  --passed: oklch(0.45 0 0);
+  --passed-soft: oklch(0.94 0 0);
+  --live: oklch(0.65 0.17 152);
+  --canvas-light: oklch(0.975 0 0);
+  --canvas-dark: oklch(0.2 0 0);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+  /* Whim's type scale, carried by the elements themselves so pages can write plain h1, h2, h3, and p. */
+  h1 {
+    @apply text-3xl font-bold tracking-tight text-pretty;
+  }
+  h2 {
+    @apply text-2xl font-semibold tracking-tight text-pretty;
+  }
+  h3 {
+    @apply text-lg font-medium tracking-tight text-pretty;
+  }
+  p {
+    @apply text-sm leading-relaxed text-pretty;
+  }
+}
+/* Whim: quiet actions, canvas, motion */
+@layer components {
+  /* Low weight at rest (still ≥3:1), brighter on hover and focus-within, full strength on touch. Only color and opacity change. */
+  .quiet-actions {
+    color: var(--muted-foreground);
+    transition: color 150ms ease-out, opacity 150ms ease-out;
+  }
+  .quiet-actions:focus-within {
+    color: var(--foreground);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .group\/card:hover .quiet-actions {
+      color: var(--foreground);
+    }
+  }
+  @media (pointer: coarse) {
+    .quiet-actions {
+      color: var(--foreground);
+    }
+    /* Visual size stays small; the hit area does not. */
+    .quiet-actions button {
+      min-width: 44px;
+      min-height: 44px;
+    }
+  }
+
+  .canvas[data-canvas="light"] { background: var(--canvas-light); }
+  .canvas[data-canvas="dark"] { background: var(--canvas-dark); }
+  .canvas[data-canvas="checker"] {
+    background-color: oklch(0.97 0 0);
+    background-image:
+      linear-gradient(45deg, oklch(0.88 0 0) 25%, transparent 25%),
+      linear-gradient(-45deg, oklch(0.88 0 0) 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, oklch(0.88 0 0) 75%),
+      linear-gradient(-45deg, transparent 75%, oklch(0.88 0 0) 75%);
+    background-size: 16px 16px;
+    background-position: 0 0, 0 8px, 8px -8px, -8px 0;
+  }
+  /* Card borders adapt so cards stay distinct on any canvas. */
+  .canvas[data-tone="light"] { --card-border: oklch(0 0 0 / 10%); --card-shadow: 0 1px 2px oklch(0 0 0 / 4%); }
+  .canvas[data-tone="dark"] { --card-border: oklch(1 0 0 / 18%); --card-shadow: 0 1px 2px oklch(0 0 0 / 30%); }
+  .version-card {
+    border: 1px solid var(--card-border);
+    box-shadow: var(--card-shadow);
+  }
+  /* Rejected versions step back: the picture fades, the labels and actions keep full contrast. */
+  .version-card[data-status="passed"] [data-preview] {
+    opacity: 0.5;
+    transition: opacity 150ms ease-out;
+  }
+  .version-card[data-status="passed"]:hover [data-preview],
+  .version-card[data-status="passed"]:focus-within [data-preview] {
+    opacity: 1;
+  }
+
+  /* "Connected" and "Capturing" get one green spotlight sweep on first load, then settle to muted. */
+  .status-sweep {
+    background-image: linear-gradient(90deg, var(--muted-foreground) 0 32%, var(--live) 44% 56%, var(--muted-foreground) 68% 100%);
+    background-size: 300% 100%;
+    background-position: 100% 0;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    animation: status-sweep 2.2s ease-in-out 300ms 1 both;
+  }
+  @keyframes status-sweep {
+    from { background-position: 100% 0; }
+    to { background-position: 0% 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .status-sweep { animation: none; background: none; color: var(--muted-foreground); -webkit-text-fill-color: currentColor; }
+  }
+
+  /* Work in progress: a soft light-gray spotlight loops across the words until the state resolves. */
+  .text-shimmer {
+    background-image: linear-gradient(90deg, var(--muted-foreground) 0 30%, oklch(0.78 0 0) 50%, var(--muted-foreground) 70% 100%);
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    animation: text-shimmer 2.4s cubic-bezier(0.45, 0, 0.25, 1) infinite;
+  }
+  @keyframes text-shimmer {
+    0% { background-position: 100% 0; }
+    70%, 100% { background-position: 0% 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .text-shimmer { animation: none; background: none; color: var(--muted-foreground); -webkit-text-fill-color: currentColor; }
+  }
+
+  /* A hand tilted mid-wave, with a short wave on arrival. It pivots near its middle so it stays centered in its circle. */
+  .wave {
+    transform: rotate(18deg);
+    transform-origin: 50% 55%;
+    animation: wave 1.6s ease-in-out 500ms 1 both;
+  }
+  @keyframes wave {
+    0%, 100% { transform: rotate(18deg); }
+    15% { transform: rotate(34deg); }
+    35% { transform: rotate(6deg); }
+    55% { transform: rotate(32deg); }
+    75% { transform: rotate(10deg); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .wave { animation: none; }
+  }
+
+  .listening {
+    animation: listening 2.4s ease-in-out infinite;
+  }
+  @keyframes listening {
+    0%, 100% { transform: scale(1); opacity: 0.55; }
+    50% { transform: scale(1.35); opacity: 1; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .listening { animation: none; opacity: 0.8; }
+    .fade-in { animation: none; }
+  }
+  .fade-in {
+    animation: fade-in 240ms ease-out both;
+  }
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(2px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+
+@layer base {
+  button, a, input, [role="button"] { touch-action: manipulation; }
+  @media (pointer: fine) { html { overscroll-behavior: none; } }
+  :focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
+}

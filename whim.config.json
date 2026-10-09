@@ -1,0 +1,6 @@
+{
+  "urls": ["http://localhost:3200", "http://localhost:3200/setup", "http://localhost:3200/subjects/whim-sidebar"],
+  "endpoint": "http://localhost:3200/api/ingest",
+  "tokenEnv": "WHIM_TOKEN",
+  "include": ["src/**", "explorations/**", "public/**", "copy.json", "*.md", "docs/**"]
+}
