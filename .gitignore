@@ -43,3 +43,6 @@ next-env.d.ts
 # whim capture state
 .whim/
 .whim-dev.log
+
+# private notes: the spec, decisions and write-up stay on this machine
+/docs/
