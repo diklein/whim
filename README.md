@@ -2,6 +2,8 @@
 
 Whim tracks how a project's design evolves, turn by turn, so going back is a click, not a guess.
 
+**Live demo:** [whim.diklein.com](https://whim.diklein.com)
+
 Each Claude Code turn in a tracked project becomes one snapshot: the prompt, what changed, a screenshot of every `data-whim` element, and a one-line summary. Whim shows that history by subject (the sidebar, the logo, a headline, a palette) so you can pick, reject, compare, and copy a prompt that restores any version.
 
 ## Run Whim
