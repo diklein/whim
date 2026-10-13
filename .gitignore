@@ -44,5 +44,5 @@ next-env.d.ts
 .whim/
 .whim-dev.log
 
-# private notes: the spec, decisions and write-up stay on this machine
-/docs/
+# private: the write-up stays on this machine
+/docs/write-up.md
