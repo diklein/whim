@@ -112,6 +112,7 @@ Each decision records what was chosen, why, and what was given up, so the reason
 | Where a subject lives shows once, in the subject header ("On /, /setup and /subjects/whim-sidebar"), not on cards | A page is a property of the thing, not of each change; repeating it per card is noise. The hook records every configured page a slug appears on and ingest keeps the latest set on the subject, so it fills without a new version. Copy nested under a component inherits its parent's pages | "On every page" wording (the server does not know the configured list); per-version page history |
 | Rejected cards fade only their picture, not the whole card | Dimming the card took the badge and time below 3:1; fading the preview keeps the "stepped back" reading with every label at full contrast | The lighter look of a fully faded card |
 | Escape in the grid clears the held set and otherwise does nothing | Escape as "go back" sent keyboard users to whatever page came before, sometimes Setup. Compare keeps Escape as close because it is a full-screen mode | A one-key way back from a subject page |
+| After the first prompt, Live says "Your first prompt arrived" and that tracking starts from the next change | The first snapshot has nothing earlier to compare with, so that prompt lands with no files and no cards; a blank feed read as a broken install. `/api/preview?state=first-landed` shows it | Treating every file as new on the first prompt, which would flood Live with the whole project |
 
 
 ## Engineering

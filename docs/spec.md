@@ -92,13 +92,14 @@ Screens:
 ## States
 
 - **Hook not connected:** Setup shows the steps, each with a copy control, and the third step waits for the first prompt with a dashed card and shimmering text, static under reduced motion.
+- **First prompt arrived:** the first snapshot has nothing to compare with, so Live says so and that tracking starts from the next change.
 - **Live turn:** capturing, then summarizing, then ready. Cards appear with "Writing description…" and fill in when the summary lands. Subject pages poll while a turn is pending.
 - **Localhost unreachable:** the screenshot step fails, but the prompt, summary and diff still land, and the turn carries a note naming the URL.
 - **AI failure:** the turn lands without a summary and offers a retry.
 - **Upload failure:** the hook keeps the payload in `.whim/queue` and sends it on the next turn; Live shows how many are waiting.
 - **Removed:** hidden from every view and kept with `removed_at`. There is no trash view and no sweep yet.
 - **Empty views:** an icon in a soft circle above the title.
-- **Development previews:** `/api/preview?state=first-run` and `?state=first-prompt` show the fresh-install and first-result screens without touching data. `/dev/skeletons` shows every loading skeleton.
+- **Development previews:** `/api/preview?state=first-run`, `?state=first-landed` and `?state=first-prompt` show the fresh-install, first-prompt and first-result screens without touching data. `/dev/skeletons` shows every loading skeleton.
 
 ## Deployment
 
