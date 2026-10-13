@@ -210,25 +210,6 @@
     opacity: 1;
   }
 
-  /* "Connected" and "Capturing" get one green spotlight sweep on first load, then settle to muted. */
-  .status-sweep {
-    background-image: linear-gradient(90deg, var(--muted-foreground) 0 32%, var(--live) 44% 56%, var(--muted-foreground) 68% 100%);
-    background-size: 300% 100%;
-    background-position: 100% 0;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    -webkit-text-fill-color: transparent;
-    animation: status-sweep 2.2s ease-in-out 300ms 1 both;
-  }
-  @keyframes status-sweep {
-    from { background-position: 100% 0; }
-    to { background-position: 0% 0; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .status-sweep { animation: none; background: none; color: var(--muted-foreground); -webkit-text-fill-color: currentColor; }
-  }
-
   /* Work in progress: a soft light-gray spotlight loops across the words until the state resolves. */
   .text-shimmer {
     background-image: linear-gradient(90deg, var(--muted-foreground) 0 30%, oklch(0.78 0 0) 50%, var(--muted-foreground) 70% 100%);

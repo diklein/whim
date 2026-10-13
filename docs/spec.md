@@ -63,7 +63,7 @@ An exploration set is the versions that share a subject and a turn, so siblings 
 
 Whim has two axes: subjects (what changed) and turns (when). The sidebar is the shadcn sidebar block, top to bottom:
 
-- **Identity tile** with the project name (`WHIM_PROJECT_NAME`) and the hook status as a word under it: Connected, in green, or Not connected, in red.
+- **Identity tile** with the project name (`WHIM_PROJECT_NAME`) and the hook status under it: Not connected, in red, until the first capture; Capturing… while a turn is in progress; otherwise when the last capture landed ("Last capture 2 h ago"). Whim cannot see the hook, so it never says Connected.
 - **Live:** the feed of prompts.
 - **Subjects,** grouped by kind in collapsible sections (Components, Text, Colors, Assets), with children nested one level and a count per subject. Only subjects with a version that renders are listed. Copy nests under the component that contains it; the Text section holds copy that lives in no tagged element.
 - **Shelved** and **Setup** in the footer.

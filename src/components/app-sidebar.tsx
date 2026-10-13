@@ -28,7 +28,7 @@ type Group = { label: string; subjects: SidebarSubject[] };
  * The sidebar on the shadcn sidebar-07 model, minus its collapsing: identity on top, grouped subjects with an icon
  * per kind, Shelved and Setup at the bottom. Always open on desktop; a sheet behind a Menu button on phones.
  */
-export function AppSidebar({ project, capture, groups, passedCount }: { project: string; capture: CaptureStatus; groups: Group[]; passedCount: number }) {
+export function AppSidebar({ project, capture, lastCapture, groups, passedCount }: { project: string; capture: CaptureStatus; lastCapture: string | null; groups: Group[]; passedCount: number }) {
   const path = usePathname();
   const isActive = (href: string, exact = false) => (exact ? path === href : path === href || path.startsWith(href + "/"));
   // Nothing captured yet: no Live, no subjects, no footer. Just a welcome while Setup is finished.
@@ -47,7 +47,7 @@ export function AppSidebar({ project, capture, groups, passedCount }: { project:
                 </span>
                 <span className="grid flex-1 self-center text-left text-sm leading-tight">
                   <span className="truncate font-semibold">{project}</span>
-                  {!fresh && <HookStatus status={capture} />}
+                  {!fresh && <HookStatus status={capture} lastCapture={lastCapture} />}
                 </span>
               </Link>
             </SidebarMenuButton>
@@ -194,11 +194,15 @@ function Count({ n, unit = "versions" }: { n: number; unit?: string }) {
   );
 }
 
-/** Hook status as one word under the project name. Red when not connected, a looping shimmer while capturing, one green sweep when connected. */
-function HookStatus({ status }: { status: CaptureStatus }) {
-  const label = status === "capturing" ? "Capturing…" : status === "idle" ? "Connected" : "Not connected";
+/**
+ * Hook status under the project name, limited to what the server knows: red until the first capture arrives, a looping
+ * shimmer while a turn is being captured or written up, and otherwise when the last capture landed. Whim cannot see the
+ * hook itself, so it never claims to be connected.
+ */
+function HookStatus({ status, lastCapture }: { status: CaptureStatus; lastCapture: string | null }) {
+  const label = status === "capturing" ? "Capturing…" : status === "idle" ? `Last capture ${lastCapture ?? "unknown"}` : "Not connected";
   return (
-    <span data-whim="whim-hook-status" role="status" className={cn("w-fit max-w-full truncate text-xs", status === "none" ? "font-medium text-destructive" : "text-muted-foreground", status === "idle" && "status-sweep", status === "capturing" && "text-shimmer")}>
+    <span data-whim="whim-hook-status" role="status" className={cn("w-fit max-w-full truncate text-xs", status === "none" ? "font-medium text-destructive" : "text-muted-foreground", status === "capturing" && "text-shimmer")}>
       {label}
     </span>
   );

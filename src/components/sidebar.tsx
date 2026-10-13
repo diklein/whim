@@ -3,6 +3,7 @@ import { captureStatus, getSidebar, KIND_GROUPS } from "@/db/queries";
 import { previewState } from "@/lib/preview";
 import { getTurns } from "@/db/queries";
 import type { SidebarSubject } from "@/lib/types";
+import { nowMs, relativeTime } from "@/lib/format";
 import { AppSidebar } from "./app-sidebar";
 import { Skeleton } from "./ui/skeleton";
 
@@ -13,7 +14,7 @@ export async function Sidebar() {
   const { roots, lastTurn, passedCount } = await getSidebar();
   await connection(); // status compares against the clock, so it is computed per request, not prerendered
   const preview = await previewState();
-  if (preview === "first-run") return <AppSidebar project={PROJECT} capture="none" groups={[]} passedCount={0} />;
+  if (preview === "first-run") return <AppSidebar project={PROJECT} capture="none" lastCapture={null} groups={[]} passedCount={0} />;
   let subjects = roots;
   let count = passedCount;
   if (preview === "first-prompt") {
@@ -26,8 +27,9 @@ export async function Sidebar() {
     count = 0;
   }
   const capture = captureStatus(lastTurn);
+  const lastCapture = lastTurn ? relativeTime(lastTurn.createdAt, nowMs()) : null;
   const groups = KIND_GROUPS.map((g) => ({ label: g.label, subjects: subjects.filter((s) => g.kinds.includes(s.kind)) })).filter((g) => g.subjects.length);
-  return <AppSidebar project={PROJECT} capture={preview === "first-prompt" ? "idle" : capture} groups={groups} passedCount={count} />;
+  return <AppSidebar project={PROJECT} capture={preview === "first-prompt" ? "idle" : capture} lastCapture={preview === "first-prompt" ? "just now" : lastCapture} groups={groups} passedCount={count} />;
 }
 
 export function SidebarSkeleton() {

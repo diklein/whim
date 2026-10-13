@@ -7,18 +7,19 @@ import { hasPreview, tokenOrderFor } from "@/lib/format";
 
 const { turns, subjects, versions } = schema;
 
-const CAPTURING_WINDOW_MS = 15 * 60_000;
-
 /** Every read is tagged with this; mutations call updateTag or revalidateTag with it. */
 export const WHIM_TAG = "whim";
 
 /** A version worth showing: a screenshot or image, or text on a text or color subject. Mirrors hasPreview in SQL. */
 const PREVIEWABLE = or(isNotNull(versions.blobUrl), and(inArray(subjects.kind, ["text", "color"]), isNotNull(versions.textContent)));
 
-/** Capture status from the newest turn. Computed at render, outside the cache, because it depends on the clock. */
+/**
+ * Capture status from the newest turn: nothing ever captured, a turn still being captured or written up, or idle.
+ * The server cannot see the hook, so idle is reported as the time of the last capture, never as "connected".
+ */
 export function captureStatus(last: { createdAt: Date; status: string } | null): CaptureStatus {
   if (!last) return "none";
-  return Date.now() - last.createdAt.getTime() < CAPTURING_WINDOW_MS || last.status !== "ready" ? "capturing" : "idle";
+  return last.status === "capturing" || last.status === "summarizing" ? "capturing" : "idle";
 }
 
 /**
