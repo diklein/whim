@@ -11,7 +11,7 @@ export function FirstPromptLanded({ first }: { first: boolean }) {
     <div className="flex flex-1 flex-col" data-whim="whim-first-prompt">
       <EmptyState icon={MessageSquareDashedIcon} title={first ? "Your first prompt arrived" : "Nothing to show yet"}>
         {first
-          ? "Nothing to compare yet. Whim starts tracking from the next change: send another prompt in your project and it shows up here."
+          ? "Nothing to compare yet. Keep prompting to start tracking changes."
           : "No prompt has changed a tracked file yet. Ask Claude for a design change in your project and it shows up here."}
       </EmptyState>
     </div>
