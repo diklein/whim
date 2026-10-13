@@ -112,7 +112,8 @@ async function run(input) {
     pageCss: capture?.css ?? null,
     fonts: capture?.fonts ?? [],
     roots: capture?.roots ?? null,
-    captureError: capture?.error ?? capture?.skipped ?? null,
+    // Whim accepts up to 500 characters here; a Playwright launch error alone can be longer, and a rejected upload would lose the turn.
+    captureError: trimError(capture?.error ?? capture?.skipped),
   };
 
   const token = resolveToken(cwd, config.tokenEnv || "WHIM_TOKEN");
@@ -152,6 +153,12 @@ async function send(endpoint, token, payload, whimDir) {
     payload.captureError = [payload.captureError, `${dropped.slug} screenshot too large to upload`].filter(Boolean).join("; ");
   }
   return false;
+}
+
+function trimError(text) {
+  if (!text) return null;
+  const one = String(text).replace(/\s+/g, " ").trim();
+  return one.length > 500 ? one.slice(0, 499) + "\u2026" : one;
 }
 
 function note(whimDir, message) {
